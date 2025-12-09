@@ -1,0 +1,10 @@
+A simple AI automation project integrating:
+
+- **PHP** — lightweight backend
+- **TailwindCSS** — clean, modern UI
+- **n8n** — automation and AI processing
+
+- Submit any text-based task
+- Task sent to an n8n workflow via webhook
+- n8n uses an AI model (OpenAI / Gemini / Local) to generate structured output
+- Result displayed in a formatted JSON viewer
