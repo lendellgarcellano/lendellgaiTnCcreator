@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Task & Content Generator</title>
-    <link href="tailwind.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Task & Content Generator</title>
+  <link href="tailwind.css" rel="stylesheet" />
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
-    <div class="max-w-2xl mx-auto mt-20 p-8 bg-white shadow-xl rounded-lg">
-        <h1 class="text-3xl font-bold mb-6 text-center">AI Task & Content Generator</h1>
+  <div class="max-w-2xl mx-auto mt-20 p-8 bg-white shadow-xl rounded-lg">
+    <h1 class="text-3xl font-bold mb-6 text-center">AI Task & Content Generator</h1>
 
-        <p class="text-gray-600 text-center mb-6">
-            Enter any task and let n8n + AI process it for you.
-        </p>
+    <p class="text-gray-600 text-center mb-6">
+      Enter any task and let n8n + AI process it for you.
+    </p>
 
-        <form action="process.php" method="POST" class="space-y-4">
-            <textarea 
-                name="task" 
-                class="w-full border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500" 
-                placeholder="Example: Generate a product description for a modern office chair." 
-                required></textarea>
+    <textarea
+      id="taskInput"
+      class="w-full border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500"
+      placeholder="Example: Generate a product description for a modern office chair."
+      required
+    ></textarea>
 
-            <button 
-                class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition">
-                Generate with AI
-            </button>
-        </form>
+    <button
+      id="generateBtn"
+      class="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 transition mt-4"
+    >
+      Generate with AI
+    </button>
+
+    <div id="outputContainer" class="hidden mt-6">
+      <h2 class="text-xl font-semibold mb-2">Generated Result</h2>
+      <pre
+        id="output"
+        class="bg-gray-900 text-green-400 p-4 rounded overflow-auto text-sm"
+      ></pre>
     </div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
