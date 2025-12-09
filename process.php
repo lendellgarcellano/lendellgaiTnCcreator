@@ -4,7 +4,7 @@ if (!isset($_POST['task'])) {
 }
 
 $task = $_POST['task'];
-$webhookUrl = "YOUR_WEBHOOK_URL_HERE"; // n8n Webhook URL
+$webhookUrl = "https://lendell-garcellano.app.n8n.cloud/webhook/portfolio-ai"; // n8n Webhook URL
 
 $data = ["task" => $task];
 
