@@ -10,7 +10,6 @@ generateBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Show loading animation
   outputContainer.classList.remove("hidden");
   output.innerHTML = `
     <div class="flex items-center justify-center space-x-2">
@@ -30,28 +29,29 @@ generateBtn.addEventListener("click", async () => {
 
     const result = await response.json();
 
-    // Render nicely if JSON has expected fields
     if (result.title && result.output) {
-  output.innerHTML = `
-    <h3 class="text-xl font-bold mb-2">${result.title}</h3>
-    <p class="mb-2">${result.output}</p>
-    ${
-      result.bullet_points?.length
-        ? `<ul class="list-disc ml-5 mb-2">${result.bullet_points.map(b => `<li>${b}</li>`).join('')}</ul>`
-        : ''
+      output.innerHTML = `
+        <h3 class="text-xl font-bold mb-2">${result.title}</h3>
+        <p class="mb-2">${result.output}</p>
+        ${
+          result.bullet_points?.length
+            ? `<ul class="list-disc ml-5 mb-2">${result.bullet_points.map(b => `<li>${b}</li>`).join('')}</ul>`
+            : ''
+        }
+        ${
+          result.extra_notes
+            ? `<p class="text-gray-400 italic">Note: ${result.extra_notes}</p>`
+            : ''
+        }
+      `;
+    } else {
+      output.textContent = JSON.stringify(result, null, 2);
     }
-    ${
-      result.extra_notes
-        ? `<p class="text-gray-400 italic">Note: ${result.extra_notes}</p>`
-        : ''
-    }
-  `;
-} else {
-  output.textContent = JSON.stringify(result, null, 2);
-}
-
 
   } catch (error) {
-    output.innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
+    output.innerHTML = `
+      <p class="text-red-600">Error: ${error.message}</p>
+      <p class="text-gray-600 italic">We are using the free n8n plan, the message limit may have been hit. Please try again after some time.</p>
+    `;
   }
 });
