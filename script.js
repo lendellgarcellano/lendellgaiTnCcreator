@@ -27,7 +27,17 @@ generateBtn.addEventListener("click", async () => {
       body: JSON.stringify({ task })
     });
 
-    const result = await response.json();
+    let result;
+    try {
+      result = await response.json();
+    } catch {
+      result = {
+        title: "Service Unavailable",
+        output: "The workflow encountered an error. This may be due to the free n8n plan message limit. Please try again later.",
+        bullet_points: [],
+        extra_notes: ""
+      };
+    }
 
     if (result.title && result.output) {
       output.innerHTML = `
@@ -51,7 +61,7 @@ generateBtn.addEventListener("click", async () => {
   } catch (error) {
     output.innerHTML = `
       <p class="text-red-600">Error: ${error.message}</p>
-      <p class="text-gray-600 italic">We are using the free n8n plan, the message limit may have been hit. Please try again after some time.</p>
+      <p class="text-gray-600 italic">If you are using the free n8n plan, the message limit may have been hit. Please try again after some time.</p>
     `;
   }
 });
