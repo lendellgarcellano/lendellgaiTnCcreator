@@ -22,7 +22,7 @@ generateBtn.addEventListener("click", async () => {
   `;
 
   try {
-    const response = await fetch("https://lendell-garcellano.app.n8n.cloud/webhook-test/portfolio-ai", {
+    const response = await fetch("https://lendell-garcellano.app.n8n.cloud/webhook/portfolio-ai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ task })
