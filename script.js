@@ -2,12 +2,6 @@ const taskInput = document.getElementById("taskInput");
 const generateBtn = document.getElementById("generateBtn");
 const outputContainer = document.getElementById("outputContainer");
 const output = document.getElementById("output");
-const response = await fetch("https://lendell-garcellano.app.n8n.cloud/webhook/portfolio-ai", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ task })
-});
-
 
 generateBtn.addEventListener("click", async () => {
   const task = taskInput.value.trim();
