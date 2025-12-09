@@ -32,24 +32,24 @@ generateBtn.addEventListener("click", async () => {
 
     // Render nicely if JSON has expected fields
     if (result.title && result.output) {
-      output.innerHTML = `
-        <h3 class="text-xl font-bold mb-2">${result.title}</h3>
-        <p class="mb-2">${result.output}</p>
-        ${
-          result.bullet_points && result.bullet_points.length
-            ? `<ul class="list-disc ml-5 mb-2">${result.bullet_points.map(b => `<li>${b}</li>`).join('')}</ul>`
-            : ''
-        }
-        ${
-          result.extra_notes
-            ? `<p class="text-gray-400 italic">Note: ${result.extra_notes}</p>`
-            : ''
-        }
-      `;
-    } else {
-      // fallback for unexpected format
-      output.textContent = JSON.stringify(result, null, 2);
+  output.innerHTML = `
+    <h3 class="text-xl font-bold mb-2">${result.title}</h3>
+    <p class="mb-2">${result.output}</p>
+    ${
+      result.bullet_points?.length
+        ? `<ul class="list-disc ml-5 mb-2">${result.bullet_points.map(b => `<li>${b}</li>`).join('')}</ul>`
+        : ''
     }
+    ${
+      result.extra_notes
+        ? `<p class="text-gray-400 italic">Note: ${result.extra_notes}</p>`
+        : ''
+    }
+  `;
+} else {
+  output.textContent = JSON.stringify(result, null, 2);
+}
+
 
   } catch (error) {
     output.innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
