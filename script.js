@@ -10,7 +10,7 @@ generateBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Show loading
+  // Show loading animation
   outputContainer.classList.remove("hidden");
   output.innerHTML = `
     <div class="flex items-center justify-center space-x-2">
@@ -42,12 +42,12 @@ generateBtn.addEventListener("click", async () => {
         }
         ${
           result.extra_notes
-            ? `<p class="text-gray-600 italic">Note: ${result.extra_notes}</p>`
+            ? `<p class="text-gray-400 italic">Note: ${result.extra_notes}</p>`
             : ''
         }
       `;
     } else {
-      // If AI returned raw JSON or unexpected format
+      // fallback for unexpected format
       output.textContent = JSON.stringify(result, null, 2);
     }
 
